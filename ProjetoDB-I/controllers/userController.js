@@ -8,6 +8,24 @@ const userController = {
         let users = await User.findAll();
         return res.render('users', { users })
     },
+    create: (req, res)=> {
+        return res.render('cadastroUser')
+    },
+    store: async (req, res)=> {
+        const { name, email, birthdate, password, age } = req.body;
+
+        const resultado = await User.create({
+            name,
+            email,
+            birthdate,
+            password,
+            age
+        });
+
+        console.log(resultado);
+
+        return res.redirect('/users')
+    },
     findById: async (req, res)=> {
         let {id} = req.params;
 
@@ -41,6 +59,19 @@ const userController = {
         User.max('age').then(max => {
             res.send("O usuario mais velho tem " + max + " anos")
         })
+    },
+    bulkCreate: async (req, res)=> {
+        const listaDeUsuarios = [
+            {name: "Igor", email: "igor@email.com", birthdate: "09-11-1999", password: "009988", age: "21"},
+            {name: "Gilberto", email: "gilberto@email.com", birthdate: "03-03-1998", password: "006622", age: "22"},
+            {name: "Fernanda", email: "fernanda@email.com", birthdate: "06-04-1998", password: "221177", age: "22"},
+            {name: "Isabella", email: "isabella@email.com", birthdate: "09-11-2002", password: "223300", age: "18"}
+        ]
+
+        const resultado = await User.bulkCreate(listaDeUsuarios);
+        console.log(resultado);
+
+        res.send("Criados")
     }
 }
 
