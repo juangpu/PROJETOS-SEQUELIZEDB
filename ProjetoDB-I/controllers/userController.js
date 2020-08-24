@@ -26,6 +26,33 @@ const userController = {
 
         return res.redirect('/users')
     },
+    edit: async (req, res)=> {
+        const {id} = req.params;
+
+        const user = await User.findByPk(id);
+
+        return res.render('editarUser', {user})
+    },
+    update: async (req, res)=> {
+        const {id} = req.params;
+        const { name, email, birthdate, password, age } = req.body;
+
+        const resultado = await User.update({
+            name,
+            email,
+            birthdate,
+            password,
+            age
+        }, {
+            where: {
+                id:id
+            }
+        });
+
+        console.log(resultado);
+
+        return res.redirect('/users')
+    },
     findById: async (req, res)=> {
         let {id} = req.params;
 

@@ -29,7 +29,10 @@
                     <tr>
                         <th scope="row"> <%= user.id %> </th>
                         <th> <%= user.name %> </th>
-                        <th><a href="/users/ver/<%= user.id %>" class="btn btn-primary"> Ver dados </a></th>
+                        <th>
+                            <a href="/users/ver/<%= user.id %>" class="btn btn-primary"> Ver dados </a>
+                            <a href="/users/editar/<%= user.id %>" class="btn btn-warning"> Editar dados </a>
+                        </th>
                     </tr>
                 <% }) %>
             </tbody>

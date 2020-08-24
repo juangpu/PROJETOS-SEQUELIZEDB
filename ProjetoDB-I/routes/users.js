@@ -10,5 +10,7 @@ router.get('/agregacoes', userController.agregadores);
 router.get('/cadastro', userController.create);
 router.post('/cadastro', userController.store);
 router.get('/criacao', userController.bulkCreate);
+router.get('/editar/:id', userController.edit);
+router.put('/editar/:id', userController.update);
 
 module.exports = router;
