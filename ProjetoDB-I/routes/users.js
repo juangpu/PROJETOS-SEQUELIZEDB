@@ -12,5 +12,6 @@ router.post('/cadastro', userController.store);
 router.get('/criacao', userController.bulkCreate);
 router.get('/editar/:id', userController.edit);
 router.put('/editar/:id', userController.update);
+router.delete('/deletar/:id', userController.destroy);
 
 module.exports = router;

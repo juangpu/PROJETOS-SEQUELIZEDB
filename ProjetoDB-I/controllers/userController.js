@@ -53,6 +53,19 @@ const userController = {
 
         return res.redirect('/users')
     },
+    destroy: async (req, res)=> {
+        const {id} = req.params
+
+        const resultado = await User.destroy({
+            where: {
+                id:id
+            }
+        })
+
+        console.log(resultado);
+
+        res.redirect('/users')
+    }, 
     findById: async (req, res)=> {
         let {id} = req.params;
 

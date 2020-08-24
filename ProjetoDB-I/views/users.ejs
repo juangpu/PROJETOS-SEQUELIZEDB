@@ -32,6 +32,9 @@
                         <th>
                             <a href="/users/ver/<%= user.id %>" class="btn btn-primary"> Ver dados </a>
                             <a href="/users/editar/<%= user.id %>" class="btn btn-warning"> Editar dados </a>
+                            <form action="/users/deletar/<%= user.id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-danger"> Excluir </button>
+                            </form>
                         </th>
                     </tr>
                 <% }) %>
